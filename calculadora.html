@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .fundo{
+            background-image: white;
+            height: 100vh;
+            color: aliceblue;
+            font-family: cursive;
+            text-align: center;
+        }
+        .calculator{
+            position: absolute;
+            background-color: rgba(12, 0, 179, 0.61);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 35px;
+            padding: 15px;
+        }
+        .botao{
+            width: 50px;
+            height: 50px;
+            font-size: 25px;
+            cursor: pointer;
+            background-color:rgba(27, 27, 23, 0.678);
+            border: none;
+            border-radius: 15px;
+            color: white;
+        }
+        .botao:hover{
+            background-color: rgba(12, 7, 80, 0.479);
+            transition: 0.1s;
+            transform: scale(1.2);
+        }
+        #result{
+            background-color: white;
+            width: 200px;
+            height: 30px;
+            margin: 3px;
+            font-size: 25px;
+            color: black;
+            text-align: right;
+            padding: 5px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="fundo">
+       <div class="calculator">
+           <h1>CALC UNI</h1>
+           <p id="result"></p>
+           <table>
+               <tr>
+                   <td><button class="botao" onclick="cleam()">C</button></td>
+                   <td><button class="botao" onclick="back()"><</button></td>
+                   <td><button class="botao" onclick="insert('/')">/</button></td>
+                   <td><button class="botao" onclick="insert('*')">X</button></td>
+               </tr>
+               <tr>
+                   <td><button class="botao" onclick="insert('7')">7</button></td>
+                   <td><button class="botao" onclick="insert('8')">8</button></td>
+                   <td><button class="botao" onclick="insert('9')">9</button></td>
+                   <td><button class="botao" onclick="insert('-')">-</button></td>
+               </tr>
+               <tr>
+                   <td><button class="botao" onclick="insert('4')">4</button></td>
+                   <td><button class="botao" onclick="insert('5')">5</button></td>
+                   <td><button class="botao" onclick="insert('6')">6</button></td>
+                   <td><button class="botao" onclick="insert('+')">+</button></td>
+               </tr>
+               <tr>
+                   <td><button class="botao" onclick="insert('1')">1</button></td>
+                   <td><button class="botao" onclick="insert('2')">2</button></td>
+                   <td><button class="botao" onclick="insert('3')">3</button></td>
+                   <td rowspan="2"><button class="botao" style="height: 106px;" onclick="calcular()">=</button></td>
+               </tr>
+               <tr>
+                   <td colspan="2"><button class="botao" style="width: 106px;" onclick="insert('0')">0</button></td>
+                   <td><button class="botao" onclick="insert('.')">.</button></td>
+               </tr>
+           </table>
+       </div>
+    </div>
+
+    <script>
+        function insert(num)
+        {
+           var numero = document.getElementById('result').innerHTML;
+           document.getElementById('result').innerHTML = numero + num;
+        }
+        function cleam()
+        {
+            document.getElementById('result').innerHTML = "";
+        }
+        function back()
+        {
+            var resultado = document.getElementById('result').innerHTML;
+            document.getElementById('result').innerHTML = resultado.substring(0, resultado.length -1);
+        }
+        function calcular()
+        {
+            var resultado = document.getElementById('result').innerHTML;
+            if(resultado)
+            {
+                document.getElementById('result').innerHTML = eval(resultado);
+            }
+            else
+            {
+                document.getElementById('result').innerHTML = "ERROU"
+            }
+        }
+    </script>
+
+</body>
+</html>
